@@ -18,6 +18,7 @@ public class GzipService {
         final String gzipFile = file.getAbsolutePath() + ".gz";
         try (final FileInputStream fis = new FileInputStream(file); final GZIPOutputStream gzipOS = new GZIPOutputStream(new FileOutputStream(gzipFile))) {
             write(fis, gzipOS);
+            gzipOS.finish();
         }
         return new File(gzipFile);
     }
